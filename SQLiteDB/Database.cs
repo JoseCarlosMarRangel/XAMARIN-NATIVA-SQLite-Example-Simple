@@ -8,9 +8,10 @@ namespace SQLiteDB.Resources.Helper
 {
     public class DataBase 
     {
+        //! Lugar donde se almacena la base de datos
         string folder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
-        // Crear Base de datos
+        //! Crear Base de datos
         public bool createDatabase()
         {
             try
@@ -28,7 +29,7 @@ namespace SQLiteDB.Resources.Helper
             }
         }
 
-        // Insertar en la base de datos
+        //! Insertar en la base de datos
         public bool insertIntoTable(Person person)
         {
             try
@@ -46,7 +47,7 @@ namespace SQLiteDB.Resources.Helper
             }
         }
 
-        // Obtener Lista de base de datos
+        //! Obtener Lista de base de datos
         public List<Person> selectTable()
         {
             try
@@ -63,7 +64,7 @@ namespace SQLiteDB.Resources.Helper
             }
         }
 
-        // Actualizar campo
+        //! Actualizar campo
         public bool updateTable(Person person)
         {
             try
@@ -81,7 +82,7 @@ namespace SQLiteDB.Resources.Helper
             }
         }
 
-        // Borrar persona
+        //! Borrar persona
         public bool removeTable(Person person)
         {
             try
@@ -99,7 +100,7 @@ namespace SQLiteDB.Resources.Helper
             }
         }
 
-        // Seleccionar personas
+        //! Seleccionar personas
         public bool selectTable(int Id)
         {
             try

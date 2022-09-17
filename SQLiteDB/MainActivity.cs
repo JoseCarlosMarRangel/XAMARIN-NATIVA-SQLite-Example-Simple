@@ -14,7 +14,7 @@ namespace SQLiteDB
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-
+        //! Componentes Globales
         ListView listviewdata;
         List<Person> listsource = new List<Person>();
         DataBase db;
@@ -28,26 +28,29 @@ namespace SQLiteDB
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            //Instanciar la database
+            //!Instanciar la database
             db = new DataBase();
-            //Crear la database
+            //!Crear la database
             db.createDatabase();
-            // botones y componentes a usar
+
+            //! botones y componentes a usar
             listviewdata = FindViewById<ListView>(Resource.Id.listview1);
             edtName = FindViewById<EditText>(Resource.Id.editText1);
             btnAdd = FindViewById<Button>(Resource.Id.btnAdd);
             btnUpd = FindViewById<Button>(Resource.Id.btnUpd);
             btnDel = FindViewById<Button>(Resource.Id.btnDel);
 
-            //Cargar datos
+            //!Cargar datos
             LoadData();
 
-            //Limpiar zona de Escritura
+            //Todo Limpiar zona de Escritura
 
-            // Acciones
+            //! Acciones
             btnAdd.Click += AddPerson;
             btnUpd.Click += EditPerson;
             btnDel.Click += DelPerson;
+
+            //! Método para mostrar el número n de usuarios en la vista principal
             listviewdata.ItemClick += (s, e) => {
                 for (int i = 0; i < listsource.Count; i++) 
                 {
@@ -65,6 +68,7 @@ namespace SQLiteDB
             };
         }
 
+        //! Añadir persona a la base de datos
         private void AddPerson(object sender, EventArgs e)
         {
             try {
@@ -74,6 +78,7 @@ namespace SQLiteDB
                 };
                 db.insertIntoTable(person);
                 LoadData();
+                edtName.Text = "";
             }
             catch(Exception ex) {
                 edtName.Text = "No puedes agregar valores vacios";
@@ -81,6 +86,7 @@ namespace SQLiteDB
            
         }
 
+        //! Editar persona de la base de datos
         private void EditPerson(object sender, EventArgs e)
         {
             try {
@@ -91,6 +97,7 @@ namespace SQLiteDB
                 };
                 db.updateTable(person);
                 LoadData();
+                edtName.Text = "";
             }
             catch(Exception ex)
             {
@@ -99,6 +106,7 @@ namespace SQLiteDB
             
         }
 
+        //! Borrar persona de la base de datos
         private void DelPerson(object sender, EventArgs e) {
 
             try 
@@ -121,6 +129,7 @@ namespace SQLiteDB
                 
         }
 
+        //! Recargar la data
         private void LoadData() {
             listsource = db.selectTable();
             var adapter = new ListViewAdapter(this, listsource);

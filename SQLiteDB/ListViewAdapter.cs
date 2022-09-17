@@ -3,9 +3,10 @@ using Android.Widget;
 using Android.Views;
 using System.Collections.Generic;
 
+//! Método para el adaptador del ListView
 namespace SQLiteDB.Resources.Model {
 
-    public class ViewHolder : Java.Lang.Object 
+    public class ViewHolder : Java.Lang.Object
     {
        
         public TextView textview1 { get;set;}
@@ -32,6 +33,7 @@ namespace SQLiteDB.Resources.Model {
 
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
+            //! Esto permitira el instanciamiento y aparte automatizar el proceso de agregar elementos al listView
             var view = convertView ?? activity.LayoutInflater.Inflate(Resource.Layout.list_view,parent,false);
             var textview1 = view.FindViewById<TextView>(Resource.Id.textview2);
             textview1.Text = listperson[position].name;
